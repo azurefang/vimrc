@@ -58,7 +58,7 @@ set cursorline " 突出显示当前行
 set t_ti= t_te=
 
 "- 则点击光标不会换,用于复制
-set mouse-=a " 鼠标暂不启用, 键盘党....
+set mouse=a " 鼠标暂不启用, 键盘党....
 set selection=exclusive
 set selectmode=mouse,key
 
@@ -413,6 +413,7 @@ Bundle 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
+let NERDTreeWinPos='right'
 let g:netrw_home='~/bak'
 "close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
@@ -434,16 +435,17 @@ noremap <leader>bn :MBEbn<CR>
 noremap <leader>bp :MBEbp<CR>
 noremap <leader>bd :MBEbd<CR>
 
+
+Bundle 'c.vim'
+
 "标签导航
 Bundle 'majutsushi/tagbar'
-nmap <F9> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 "标签导航 要装ctags
 Bundle 'vim-scripts/taglist.vim'
 set tags=tags;/
 let Tlist_Ctags_Cmd="/usr/bin/ctags"
-nnoremap <silent> <F8> :TlistToggle<CR>
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Open = 0
 let Tlist_Auto_Update = 1
@@ -465,7 +467,7 @@ let Tlist_Show_One_File = 1
 let Tlist_Sort_Type = "order"
 let Tlist_Use_Horiz_Window = 0
 let Tlist_Use_Right_Window = 0
-let Tlist_WinWidth = 25
+let Tlist_WinWidth = 50
 
 "for file search ctrlp, 文件搜索
 Bundle 'kien/ctrlp.vim'
@@ -740,3 +742,5 @@ map <F5> :w<cr>:!python %<cr>
 imap <F5> <Esc>:w<CR>:!python %<CR>
 "
 nmap <F6> :NERDTreeToggle<cr>
+nmap <F7> :TagbarToggle<CR>
+nnoremap <silent> <F8> :TlistToggle<CR>
