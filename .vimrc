@@ -1,10 +1,7 @@
 "==========================================
-" Author: wklken
-" Version: 6
-" Email: wklken@yeah.net
-" BlogPost: http://wklken.me
+" Author: azurefang
+" Email: xidianft@gmail.com
 " ReadMe: README.md
-" Last_modify: 2013-08-04
 " Sections:
 " ->General 基础设置
 " ->Show 展示/排班等界面格式设置
@@ -13,11 +10,6 @@
 " ->hot key 自定义快捷键
 " ->bundle 插件管理和配置项
 " ->colortheme 主题,及一些展示上颜色的修改
-"==========================================
-
-"==========================================
-" General 基础设置
-"==========================================
 
 
 " history存储长度。
@@ -29,8 +21,7 @@ set history=2000
 "检测文件类型
 filetype on
 "针对不同的文件类型采用不同的缩进格式
-filetype indent on
-"允许插件
+filetype indent on "允许插件
 filetype plugin on
 "启动自动补全
 filetype plugin indent on
@@ -50,7 +41,7 @@ set nobackup
 set noswapfile
 
 " 突出显示当前行等 不喜欢这种定位可注解
-set cursorcolumn
+"set cursorcolumn
 set cursorline " 突出显示当前行
 
 "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
@@ -441,6 +432,7 @@ Bundle 'c.vim'
 "标签导航
 Bundle 'majutsushi/tagbar'
 let g:tagbar_autofocus = 1
+let g:tagbar_left = 1
 
 "标签导航 要装ctags
 Bundle 'vim-scripts/taglist.vim'
@@ -543,6 +535,8 @@ let g:solarized_visibility="normal"
 Bundle 'tomasr/molokai'
 "let g:molokai_original = 1
 
+"标签高亮
+Bundle 'Valloric/MatchTagAlways'
 "################### 快速移动 ###################"
 
 "更高效的移动 ,, + w/fx
@@ -602,6 +596,8 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+"emmet
+Bundle 'mattn/emmet-vim'
 
 "################# 语法检查 ###############
 

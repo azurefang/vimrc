@@ -1,0 +1,160 @@
+snippet env
+#!/usr/bin/env python
+${1}
+endsnippet
+
+snippet code
+# -*- coding: utf-8 -*-
+${1}
+endsnippet
+
+#snippets for Django
+
+snippet mauto
+${1:modle} = models.AutoField(${2})
+${3}
+endsnippet
+
+snippet mbigint
+${1:modle} = models.BigIntegerField(${2})
+${3}
+endsnippet
+
+snippet mbool
+${1:modle} = models.BooleanField(${2})
+${3}
+endsnippet
+
+snippet mchar
+${1:modle} = models.CharField(${2})
+${3}
+endsnippet
+
+snippet mcoseint
+${1:modle} = models.CommaSeparatedIntegerField(${2})
+${3}
+endsnippet
+
+snippet mdate
+${1:modle} = models.DateField(${2})
+${3}
+endsnippet
+
+snippet mdatetime
+${1:modle} = models.DateTimeField(${2})
+${3}
+endsnippet
+
+snippet mdecimal
+${1:modle} = models.DecimalField(${2})
+${3}
+endsnippet
+
+snippet memail
+${1:modle} = models.EmailField(${2})
+${3}
+endsnippet
+
+snippet mfile
+${1:modle} = models.FileField(${2})
+${3}
+endsnippet
+
+snippet mfilepath
+${1:modle} = models.FilePathField(${2})
+${3}
+endsnippet
+
+snippet mfloat
+${1:modle} = models.FloatField(${2})
+${3}
+endsnippet
+
+snippet mimg
+${1:modle} = models.ImageField(${2})
+${3}
+endsnippet
+
+snippet mint
+${1:modle} = models.IntegerField(${2})
+${3}
+endsnippet
+
+snippet mip
+${1:modle} = models.IPAddressField(${2})
+${3}
+endsnippet
+
+snippet mnullbool
+${1:modle} = models.NullBooleanField(${2})
+${3}
+endsnippet
+
+snippet mphone
+${1:modle} = models.PhoneNumberField(${2})
+${3}
+endsnippet
+
+snippet mposint
+${1:modle} = models.PostiveIntegeField(${2})
+${3}
+endsnippet
+
+snippet mposssmallint
+${1:modle} = models.PostiveSmallIntegeField(${2})
+${3}
+endsnippet
+
+snippet mslug
+${1:modle} = models.SlugField(${2})
+${3}
+endsnippet
+
+snippet msmallint
+${1:modle} = models.SmallIntegerField(${2})
+${3}
+endsnippet
+
+snippet mtext
+${1:modle} = models.TextField(${2})
+${3}
+endsnippet
+
+snippet mtime
+${1:modle} = models.TimeField(${2})
+${3}
+endsnippet
+
+snippet murl
+${1:modle} = models.URLField(${2})
+${3}
+endsnippet
+
+snippet musstate
+${1:modle} = models.USStateField(${2})
+${3}
+endsnippet
+
+snippet mxml
+${1:modle} = models.XMLField(${2})
+${3}
+endsnippet
+
+snippet mfk
+${1:modle} = models.ForeignKey(${2}) ${3}
+endsnippet
+
+snippet m2m
+${1:modle} = models.ManyToManyField(${2})
+${3}
+endsnippet
+
+snippet o2o
+${1:modle} = models.OneToOneField(${2})
+${3}
+endsnippet
+
+# Django url
+snippet url
+url(r'${1}', ${2}),${3}
+endsnippet
