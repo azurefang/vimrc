@@ -484,13 +484,18 @@ let g:ctrlp_follow_symlinks=1
 "################### 显示增强 ###################"
 
 "状态栏增强展示
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
 "if want to use fancy,need to add font patch -> git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
 "let g:Powerline_symbols = 'fancy'
-let g:Powerline_symbols = 'unicode'
-
+"let g:Powerline_symbols = 'unicode'
+Bundle 'itchyny/lightline.vim'
+let g:lightline = {
+    \ 'colorscheme': 'solarized_dark',
+    \ }
 
 "括号显示增强
+"
+"
 Bundle 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
     \ ['brown', 'RoyalBlue3'],
@@ -599,6 +604,12 @@ let g:multi_cursor_quit_key='<Esc>'
 "emmet
 Bundle 'mattn/emmet-vim'
 
+Bundle 'osyo-manga/vim-over'
+
+Bundle 'matze/vim-move'
+let g:move_key_modifier = 'C'
+
+Bundle 'rhysd/clever-f.vim'
 "################# 语法检查 ###############
 
 " 编辑时自动语法检查标红, vim-flake8目前还不支持,所以多装一个
@@ -729,7 +740,6 @@ map <silent> <F1> :if &guioptions =~# 'T' <Bar>
 
 "F2 切换dark/light
 call togglebg#map("<F2>")
-"
 nmap <F3> :GundoToggle<cr>
 "
 nmap <F4> :TaskList<cr>
