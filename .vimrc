@@ -14,7 +14,7 @@ set noswapfile
 set cursorline " 突出显示当前行
 set t_ti= t_te=
 
-set mouse=a " 鼠标暂不启用, 键盘党....
+set mouse=a " 鼠标暂不启用
 set selection=exclusive
 set selectmode=mouse,key
 
@@ -25,7 +25,7 @@ set t_vb=
 set tm=500
 
 set number
-set nowrap " 取消换行。
+"set nowrap " 取消换行。
 
 set showmatch
 set mat=2
@@ -50,7 +50,6 @@ set foldenable
 set foldmethod=indent
 set foldlevel=99
 
-"Smart indent
 set smartindent
 set autoindent " always set autoindenting on
 
@@ -58,7 +57,6 @@ set tabstop=4 " 设置Tab键的宽度 [等同的空格个数]
 set shiftwidth=4 " number of spaces to use for autoindenting
 set softtabstop=4 " 按退格键时可以一次删掉 4 个空格
 set smarttab " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
-
 set expandtab " 将Tab自动转化成空格 [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
 
 set shiftround " use multiple of shiftwidth when indenting with '<' and '>'
@@ -71,7 +69,6 @@ set ttyfast
 set relativenumber
 au FocusLost * :set number
 au FocusGained * :set relativenumber
-" 插入模式下用绝对行号, 普通模式下用相对
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 function! NumberToggle()
@@ -131,7 +128,6 @@ set wildmenu
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,*.class
 
-" Python 文件的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
 
 " if this not work ,make sure .viminfo is writable for you
@@ -179,7 +175,7 @@ cnoremap <C-k> <t_ku>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
-"Smart way to move between windows 分屏窗口移动
+" 分屏窗口移动
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -206,8 +202,6 @@ au InsertLeave * set nopaste
 
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
-
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
 "map <c-space> ?"
 
@@ -235,16 +229,12 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
-
-"Use arrow key to change buffer"
+" change buffer"
 noremap <left> :bp<CR>
 noremap <right> :bn<CR>
-
 ""Jump to start and end of line using the home row keys
-""
 nmap t o<ESC>k
 nmap T O<ESC>j
-
 " Quickly close the current window
 nnoremap <leader>q :q<CR>
 
@@ -281,36 +271,23 @@ map <leader>tm :tabmove
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-" bundle 插件管理和配置项
 "========================== config for plugins begin ======================================
-
 
 filetype off " required! turn off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
-"################### 插件管理 ###################"
-
-"使用Vundle来管理Vundle
 Plugin 'gmarik/Vundle.vim'
-" vim plugin bundle control, command model
-" :PluginInstall install
-" :PluginInstall! update
-" :PluginClean remove plugin not in list
 
-"################### 导航 ###################"
-"目录导航
 Plugin 'scrooloose/nerdtree'
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
-let NERDTreeWinPos='right'
 let g:netrw_home='~/bak'
 "close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
 
-"for minibufferexpl
-Plugin 'fholgado/minibufexpl.vim'
+"Plugin 'fholgado/minibufexpl.vim'
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
@@ -325,8 +302,6 @@ nnoremap <TAB> :MBEbn<CR>
 noremap <leader>bn :MBEbn<CR>
 noremap <leader>bp :MBEbp<CR>
 noremap <leader>bd :MBEbd<CR>
-
-Plugin 'c.vim'
 
 Plugin 'majutsushi/tagbar'
 let g:tagbar_autofocus = 1
@@ -376,10 +351,9 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
-Plugin 'itchyny/lightline.vim'
-let g:lightline = {
-    \ 'colorscheme': 'solarized_dark',
-    \ }
+Plugin 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 Plugin 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
@@ -418,24 +392,18 @@ let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
 
 Plugin 'Valloric/MatchTagAlways'
-"################### 快速移动 ###################"
-
 "更高效的移动 ,, + w/fx
 Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'vim-scripts/matchit.zip'
 
-"################### 补全及快速编辑 ###################"
-
 Plugin 'Valloric/YouCompleteMe'
 "youcompleteme 默认tab s-tab 和自动补全冲突
 "let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
 "let g:ycm_key_list_previous_completion=['<c-p>']
 let g:ycm_key_list_previous_completion = ['<Up>']
-
 
 Plugin 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -478,7 +446,6 @@ Plugin 'matze/vim-move'
 let g:move_key_modifier = 'C'
 
 Plugin 'rhysd/clever-f.vim'
-"################# 语法检查 ###############
 
 Plugin 'scrooloose/syntastic'
 let g:syntastic_error_symbol='>>'
@@ -489,9 +456,13 @@ let g:syntastic_enable_highlighting = 0
 let g:syntastic_ignore_files = ['\.py$']
 highlight SyntasticErrorSign guifg=white guibg=black
 
-
 Plugin 'klen/python-mode'
-let g:pymode_rope_completion = 0
+let g:pymode_rope=0
+let g:pymode_warnings = 1
+let g:pymode_lint_on_fly = 1
+let g:pymode_options_max_line_length = 100
+let g:pymode_lint_signs = 1
+let g:pymode_lint_cwindow = 0
 
 Plugin 'fatih/vim-go'
 let g:go_bin_path = "/Users/azurefang/.vim-go"
@@ -506,22 +477,20 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-Plugin 'nono/jquery.vim'
-
 Plugin 'Glench/Vim-Jinja2-Syntax'
 
 " task list
 Plugin 'vim-scripts/TaskList.vim'
 map <leader>td <Plug>TaskList
 
-" for git 尚未用起来
 Plugin 'tpope/vim-fugitive'
+
+Plugin 'airblade/vim-gitgutter'
 
 "edit history, 可以查看回到某个历史状态
 Plugin 'sjl/gundo.vim'
 nnoremap <leader>h :GundoToggle<CR>
 
-" end turn on
 filetype plugin indent on
 
 Plugin 'rizzatti/dash.vim'
@@ -531,7 +500,6 @@ Plugin 'rizzatti/dash.vim'
 syntax enable
 syntax on
 
-" Set extra options when running in GUI mode
 if has("gui_running")
     "set gfn=Yahei\ Monaco\ 10
     set gfn=Fantasque\ Sans\ Mono:h15
@@ -582,15 +550,9 @@ map <silent> <F1> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
 
-"F2 切换dark/light
 call togglebg#map("<F2>")
 nmap <F3> :GundoToggle<cr>
-"
 nmap <F4> :TaskList<cr>
-"
-map <F5> :w<cr>:!python %<cr>
-imap <F5> <Esc>:w<CR>:!python %<CR>
-"
 nmap <F6> :NERDTreeToggle<cr>
 nmap <F7> :TagbarToggle<CR>
 nnoremap <silent> <F8> :TlistToggle<CR>
